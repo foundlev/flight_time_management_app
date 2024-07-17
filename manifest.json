@@ -1,7 +1,7 @@
 {
   "name": "Flight Time",
   "short_name": "Flight Time",
-  "start_url": "/flight-time/index.html",
+  "start_url": "/flight_time_management_app/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4169E1",
