@@ -18,10 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modeGroup = document.getElementById('mode-group');
     const sliderGroup = document.getElementById('slider-group');
 
-    let touchStartY = 0;
-    let touchEndY = 0;
-    const minSwipeDistance = 50; // Минимальная длина свайпа, чтобы он был засчитан
-
     let previousMinutes = null;
     let previousSeconds = null;
 
@@ -37,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500); // Скрыть уведомление после завершения анимации
     };
 
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 300; // Минимальная длина свайпа, чтобы он был засчитан
+
     document.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
     }, false);
@@ -46,15 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false);
 
     document.addEventListener('touchend', () => {
-        if (touchStartY - touchEndY > minSwipeDistance) {
-            // Свайп вверх
-        }
-        if (touchEndY - touchStartY > minSwipeDistance) {
+        console.log(touchEndY - touchStartY);
+        if (touchStartY && touchEndY - touchStartY > minSwipeDistance) {
+            console.log('done');
             // Свайп вниз
             showRefreshNotification(); // Показать уведомление
             setTimeout(() => {
                 location.reload(); // Обновляем страницу через 1 секунду после показа уведомления
             }, 1000);
+        } else {
+            touchStartY = 0;
+            touchEndY = 0;
         }
     }, false);
 
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateCountdown = (flightDate, departureDate, wakeUpDate, sleepDate, roomExitDate, mode) => {
         const now = new Date();
+        updateCurrentTime();
 
         let targetDate = flightDate;
         let message = "До вылета: ";
@@ -236,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sleepDurationSlider.addEventListener('input', (event) => {
+        touchStartY = 0;
         sleepValueDisplay.textContent = event.target.value;
         localStorage.setItem('sleepDuration', event.target.value);
         updateCountdown();
@@ -246,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         radio.addEventListener('change', (event) => {
             localStorage.setItem('mode', event.target.value);
             titleStatusDisplay.textContent = 'Расчёт времени ' + (event.target.value === 'home' ? '🏘' : '🏨');
+            updateCountdown();
             calculateTimes();
         });
     }
@@ -274,6 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTheme();
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
 
-    updateCountdown();
     calculateTimes();
+    setInterval(calculateTimes, 5000);
 });
