@@ -44,8 +44,23 @@ h1 {
     transition: color var(--transition-speed);
 }
 
-.input-group, .output-group, .slider-group, .mode-group {
+.input-group, .slider-group {
     margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.output-group {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mode-group {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -67,8 +82,9 @@ label {
 
 .time-container {
     text-align: center;
-    margin: 20px 0;
+    margin: 5px 0;
 }
+
 
 .time-display {
     font-size: 24px;
@@ -332,6 +348,11 @@ body[data-theme='dark'] #refresh-notification {
     background-color: rgba(0, 0, 0, 0.95);
     color: white;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Добавлено свечение */
+}
+
+#title-status {
+    margin-top: 0px; /* Поднимает элемент на 10px вверх */
+    transition: margin-top 0.3s ease; /* Добавляет плавный переход */
 }
 
 @media (max-width: 600px) {
