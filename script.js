@@ -279,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTheme();
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
 
+    updateCountdown();
     calculateTimes();
     setInterval(calculateTimes, 5000);
 });
