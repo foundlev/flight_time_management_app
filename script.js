@@ -106,26 +106,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const timeRemaining = targetDate - now;
 
-        if (timeRemaining > 0) {
-            const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+//        if (timeRemaining > 0) {
+        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-            // Обновляем отображение только если минуты или секунды изменились
-            if (previousMinutes !== minutes || previousSeconds !== seconds) {
-                previousMinutes = minutes;
-                previousSeconds = seconds;
-                countdownDisplay.innerHTML = `<span>${message}</span>${hours} ч ${minutes} мин`;
-            }
-
-            // Переход к следующему этапу, если осталось 0 минут и 0 секунд
-            if (hours === 0 && minutes === 0 && seconds === 0) {
-                previousMinutes = null; // Сброс предыдущих минут для правильного обновления
-                previousSeconds = null; // Сброс предыдущих секунд для правильного обновления
-            }
-        } else {
-            countdownDisplay.textContent = '';
+        // Обновляем отображение только если минуты или секунды изменились
+        if (previousMinutes !== minutes || previousSeconds !== seconds) {
+            previousMinutes = minutes;
+            previousSeconds = seconds;
+            countdownDisplay.innerHTML = `<span>${message}</span>${hours} ч ${minutes} мин`;
         }
+
+        // Переход к следующему этапу, если осталось 0 минут и 0 секунд
+        if (hours === 0 && minutes === 0 && seconds === 0) {
+            previousMinutes = null; // Сброс предыдущих минут для правильного обновления
+            previousSeconds = null; // Сброс предыдущих секунд для правильного обновления
+        }
+//        } else {
+//            countdownDisplay.textContent = '';
+//        }
 
         // Используем requestAnimationFrame для более точного обновления времени
 //        requestAnimationFrame(() => updateCountdown(flightDate, departureDate, wakeUpDate, sleepDate, roomExitDate, mode));
@@ -227,15 +227,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 value = hours + '59';
             }
             event.target.value = `${value.slice(0, 2)}${value.slice(2)}`;
+            updateCountdown();
         } else {
             event.target.value = value;
         }
         localStorage.setItem('flightTime', event.target.value.replace(':', ''));
+        calculateTimes();
     });
 
     sleepDurationSlider.addEventListener('input', (event) => {
         sleepValueDisplay.textContent = event.target.value;
         localStorage.setItem('sleepDuration', event.target.value);
+        updateCountdown();
         calculateTimes();
     });
 
