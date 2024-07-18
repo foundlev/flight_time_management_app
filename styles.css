@@ -62,7 +62,50 @@ h1 {
 
 label {
     font-size: 1.2em;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.time-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.time-display {
+    font-size: 24px;
+    color: #666;
+}
+
+.countdown-display {
+    font-size: 32px;
+    font-weight: bold;
+    color: #d9534f;
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #d9534f;
+    border-radius: 8px;
+    display: inline-block;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+body[data-theme='dark'] .time-display {
+    color: #aaa;
+}
+
+body[data-theme='dark'] .countdown-display {
+    color: #ff6666;
+    border-color: #ff6666;
+    background-color: #333;
+}
+
+.highlight {
+    background-color: #f0ad4e !important;
+    color: white !important;
+}
+
+body[data-theme='dark'] .highlight {
+    background-color: #444 !important;
+    color: #ddd !important;
 }
 
 input[type="number"], input[type="radio"] {
@@ -249,6 +292,46 @@ input[type="range"]::-moz-range-thumb {
 
 .mode-container input[type="radio"]:focus + span {
     outline: 2px solid var(--secondary-color);
+}
+
+.highlight {
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 10px;
+}
+
+#refresh-notification {
+    display: none;
+    position: fixed;
+    top: -80px; /* начальное положение вне экрана */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 12px;
+    z-index: 1000;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    transition: top 0.5s ease;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Добавлено свечение */
+}
+
+#refresh-notification svg {
+    margin-right: 12px;
+}
+
+body[data-theme='light'] #refresh-notification {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: black;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Добавлено свечение */
+}
+
+body[data-theme='dark'] #refresh-notification {
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Добавлено свечение */
 }
 
 @media (max-width: 600px) {

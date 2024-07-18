@@ -15,21 +15,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="refresh-notification" style="display:none;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.2857 6.85714L8.57143 18.5714L3.71429 13.7143" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Обновлено
+    </div>
     <div class="container">
         <h1 id="title-status">Расчёт времени</h1>
         <div class="input-group">
             <label for="flight-time" id="flight-time-label">Время вылета</label>
             <input type="number" id="flight-time" placeholder="Формат: 0000" maxlength="5" autocomplete="off">
         </div>
-        <div class="countdown-container">
-            <p id="current-time"></p>
-            <p id="countdown-display"></p>
+        <div class="time-container">
+            <p id="current-time" class="time-display"></p>
+            <p id="countdown-display" class="countdown-display"></p>
         </div>
         <div class="output-group">
             <p>Выезд: <span id="departure-time">00:00</span></p>
             <p id="room-exit-time-paragraph" style="display:none;">Выход из номера: <span id="room-exit-time" style="display:none;">00:00</span></p>
             <p>Подъем: <span id="wake-up-time">00:00</span></p>
-            <p id="sleep-time-container" style="display:none;">Ухода ко сну: <span id="sleep-time">00:00</span></p>
+            <p id="sleep-time-container" style="display:none;">Уход ко сну: <span id="sleep-time">00:00</span></p>
         </div>
         <div class="mode-group">
             <div class="mode-container">
