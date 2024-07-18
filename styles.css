@@ -1,3 +1,4 @@
+
 :root {
     --background-light: #f7f7f7;
     --background-dark: #1f1e1e;
@@ -43,7 +44,7 @@ h1 {
     transition: color var(--transition-speed);
 }
 
-.input-group, .output-group, .slider-group {
+.input-group, .output-group, .slider-group, .mode-group {
     margin-bottom: 20px;
     width: 100%;
     display: flex;
@@ -64,7 +65,7 @@ label {
     margin-bottom: 5px;
 }
 
-input[type="text"] {
+input[type="number"], input[type="radio"] {
     width: 100%;
     padding: var(--input-padding);
     font-size: 1.2em;
@@ -75,21 +76,31 @@ input[type="text"] {
     box-shadow: var(--shadow-light);
 }
 
-[data-theme="dark"] input[type="text"] {
+[data-theme="dark"] input[type="number"], [data-theme="dark"] input[type="radio"] {
     background-color: var(--background-dark);
     color: var(--text-dark);
     border-color: var(--secondary-color);
     box-shadow: var(--shadow-dark);
 }
 
-input[type="text"]:focus {
+input[type="number"]:focus, input[type="radio"]:focus {
     outline: none;
     border-color: var(--secondary-color);
     background-color: var(--background-light);
 }
 
-[data-theme="dark"] input[type="text"]:focus {
+[data-theme="dark"] input[type="number"]:focus, [data-theme="dark"] input[type="radio"]:focus {
     background-color: var(--background-dark);
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.radio-group label {
+    margin: 0 10px;
 }
 
 input[type="range"] {
@@ -175,17 +186,69 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .countdown-container {
-    margin-top: 20px;
     width: 100%;
     text-align: center;
 }
 
 #countdown-display, #current-time {
     font-size: 1.5em;
-    margin-top: 20px;
+    margin-top: 0px;
     color: var(--primary-color);
     transition: color var(--transition-speed);
     font-family: 'Roboto Mono', monospace;
+}
+
+/* Стили для блока режима */
+.mode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.mode-container label {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mode-container input[type="radio"] {
+    display: none;
+}
+
+.mode-container input[type="radio"] + span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    cursor: pointer;
+}
+
+.mode-container input[type="radio"] + span:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.mode-container input[type="radio"]:checked + span:after {
+    opacity: 1;
+}
+
+.mode-container input[type="radio"]:focus + span {
+    outline: 2px solid var(--secondary-color);
 }
 
 @media (max-width: 600px) {
@@ -193,8 +256,9 @@ input[type="range"]::-moz-range-thumb {
         font-size: 2em;
     }
 
-    input[type="text"],
-    input[type="range"] {
+    input[type="number"],
+    input[type="range"],
+    input[type="radio"] {
         font-size: 1em;
     }
 

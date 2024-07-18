@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const titleStatusDisplay = document.getElementById('title-status');
     const flightTimeInput = document.getElementById('flight-time');
+    const flightTimeLabel = document.getElementById('flight-time-label');
     const departureTimeDisplay = document.getElementById('departure-time');
+    const roomExitTimeDisplay = document.getElementById('room-exit-time');
+    const roomExitTimeDisplayParagraph = document.getElementById('room-exit-time-paragraph');
     const wakeUpTimeDisplay = document.getElementById('wake-up-time');
     const sleepDurationSlider = document.getElementById('sleep-duration');
     const sleepValueDisplay = document.getElementById('sleep-value');
@@ -8,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sleepTimeDisplay = document.getElementById('sleep-time');
     const countdownDisplay = document.getElementById('countdown-display');
     const currentTimeDisplay = document.getElementById('current-time');
+    const modeRadios = document.getElementsByName('mode');
 
     const updateTheme = () => {
         const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -25,6 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const calculateTimes = () => {
         const flightTime = flightTimeInput.value.replace(':', '');
+        let mode = 'home';
+        for (const radio of modeRadios) {
+            if (radio.checked) {
+                mode = radio.value;
+                break;
+            }
+        }
+
         if (flightTime.length === 4) {
             const flightHours = parseInt(flightTime.slice(0, 2), 10);
             const flightMinutes = parseInt(flightTime.slice(2), 10);
@@ -39,13 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 flightDate.setDate(flightDate.getDate() + 1);
             }
 
-            const departureDate = new Date(flightDate);
-            departureDate.setHours(departureDate.getHours() - 2);
-            departureDate.setMinutes(departureDate.getMinutes() - 45);
-            departureTimeDisplay.textContent = `${String(departureDate.getHours()).padStart(2, '0')}:${String(departureDate.getMinutes()).padStart(2, '0')}`;
+            let departureOffset = mode === 'home' ? -2.75 * 60 * 60 * 1000 : -2 * 60 * 60 * 1000;
+            let roomExitOffset = 0;
+            let wakeUpOffset = -1 * 60 * 60 * 1000;
 
-            const wakeUpDate = new Date(departureDate);
-            wakeUpDate.setHours(departureDate.getHours() - 1);
+            if (mode === 'hotel') {
+                roomExitOffset = -15 * 60 * 1000;
+                roomExitTimeDisplay.style.display = '';
+                roomExitTimeDisplayParagraph.style.display = '';
+            } else {
+                roomExitTimeDisplay.style.display = 'none';
+                roomExitTimeDisplayParagraph.style.display = 'none';
+            }
+
+            const departureDate = new Date(flightDate.getTime() + departureOffset);
+            const roomExitDate = new Date(departureDate.getTime() + roomExitOffset);
+            const wakeUpDate = new Date(roomExitDate.getTime() + wakeUpOffset);
+
+            departureTimeDisplay.textContent = `${String(departureDate.getHours()).padStart(2, '0')}:${String(departureDate.getMinutes()).padStart(2, '0')}`;
+            roomExitTimeDisplay.textContent = `${String(roomExitDate.getHours()).padStart(2, '0')}:${String(roomExitDate.getMinutes()).padStart(2, '0')}`;
             wakeUpTimeDisplay.textContent = `${String(wakeUpDate.getHours()).padStart(2, '0')}:${String(wakeUpDate.getMinutes()).padStart(2, '0')}`;
 
             let sleepDate;
@@ -59,12 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 sleepTimeContainer.style.display = 'none';
             }
 
+            flightTimeLabel.textContent = `Время вылета: ${String(flightDate.getHours()).padStart(2, '0')}:${String(flightDate.getMinutes()).padStart(2, '0')}`;
             updateCountdown(flightDate, departureDate, wakeUpDate, sleepDate);
         } else {
             departureTimeDisplay.textContent = '00:00';
+            roomExitTimeDisplay.textContent = '00:00';
             wakeUpTimeDisplay.textContent = '00:00';
             sleepTimeContainer.style.display = 'none';
             countdownDisplay.textContent = '';
+            flightTimeLabel.textContent = 'Время вылета';
         }
     };
 
@@ -76,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (sleepDate && now < sleepDate) {
             targetDate = sleepDate;
-            message = "До отхода ко сну: ";
+            message = "До ухода ко сну: ";
         } else if (now < wakeUpDate) {
             targetDate = wakeUpDate;
             message = "До подъема: ";
@@ -100,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     flightTimeInput.addEventListener('input', (event) => {
         let value = event.target.value.replace(/\D/g, '');
         if (value.length > 4) {
-            value = value.slice(-4);
+            value = value.slice(4);
         }
         if (value.length === 1 && parseInt(value, 10) >= 3) {
             value = '0' + value;
@@ -117,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (parseInt(minutes[0], 10) > 5) {
                 value = hours + '59';
             }
-            event.target.value = `${value.slice(0, 2)}:${value.slice(2)}`;
+            event.target.value = `${value.slice(0, 2)}${value.slice(2)}`;
         } else {
             event.target.value = value;
         }
@@ -130,6 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('sleepDuration', event.target.value);
         calculateTimes();
     });
+
+    for (const radio of modeRadios) {
+        radio.addEventListener('change', (event) => {
+            localStorage.setItem('mode', event.target.value);
+            titleStatusDisplay.textContent = 'Расчёт времени ' + (event.target.value === 'home' ? '🏘' : '🏨');
+            calculateTimes();
+        });
+    }
 
     setInterval(() => {
         const flightTime = flightTimeInput.value.replace(':', '');
@@ -147,18 +183,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 flightDate.setDate(flightDate.getDate() + 1);
             }
 
-            const departureDate = new Date(flightDate);
-            departureDate.setHours(departureDate.getHours() - 2);
-            departureDate.setMinutes(departureDate.getMinutes() - 45);
+            const mode = Array.from(modeRadios).find(radio => radio.checked).value;
+            let departureOffset = mode === 'home' ? -2.75 * 60 * 60 * 1000 : -2 * 60 * 60 * 1000;
+            let roomExitOffset = 0;
+            let wakeUpOffset = -1 * 60 * 60 * 1000;
 
-            const wakeUpDate = new Date(departureDate);
-            wakeUpDate.setHours(departureDate.getHours() - 1);
+            if (mode === 'hotel') {
+                roomExitOffset = -15 * 60 * 1000;
+            }
+
+            const departureDate = new Date(flightDate.getTime() + departureOffset);
+            const roomExitDate = new Date(departureDate.getTime() + roomExitOffset);
+            const wakeUpDate = new Date(roomExitDate.getTime() + wakeUpOffset);
 
             let sleepDate;
             if (parseFloat(sleepDurationSlider.value) > 0) {
                 sleepDate = new Date(wakeUpDate);
                 sleepDate.setHours(wakeUpDate.getHours() - Math.floor(parseFloat(sleepDurationSlider.value)));
                 sleepDate.setMinutes(wakeUpDate.getMinutes() - (parseFloat(sleepDurationSlider.value) % 1) * 60);
+                sleepTimeDisplay.textContent = `${String(sleepDate.getHours()).padStart(2, '0')}:${String(sleepDate.getMinutes()).padStart(2, '0')}`;
+                sleepTimeContainer.style.display = 'block';
+            } else {
+                sleepTimeContainer.style.display = 'none';
             }
 
             updateCountdown(flightDate, departureDate, wakeUpDate, sleepDate);
@@ -166,16 +212,26 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCurrentTime();
     }, 1000);
 
+    if (localStorage.getItem('mode')) {
+        const savedMode = localStorage.getItem('mode');
+        for (const radio of modeRadios) {
+            if (radio.value === savedMode) {
+                radio.checked = true;
+                titleStatusDisplay.textContent = 'Расчёт времени ' + (event.target.value === 'home' ? '🏘' : '🏨');
+                break;
+            }
+        }
+    }
+
     if (localStorage.getItem('flightTime')) {
-        flightTimeInput.value = formatTime(localStorage.getItem('flightTime'));
+        flightTimeInput.value = localStorage.getItem('flightTime');
         flightTimeInput.dispatchEvent(new Event('input'));
     }
 
     if (localStorage.getItem('sleepDuration')) {
         sleepDurationSlider.value = localStorage.getItem('sleepDuration');
         sleepValueDisplay.textContent = sleepDurationSlider.value;
-    }
-
+        }
     updateTheme();
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
 
