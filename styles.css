@@ -339,13 +339,14 @@ input[type="range"]::-moz-range-thumb {
 }
 
 body[data-theme='light'] #refresh-notification {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 1);
     color: black;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Добавлено свечение */
+    box-shadow: 1.8px 3.5px 3.5px hsl(0deg 0% 0% / 0.45);
 }
 
 body[data-theme='dark'] #refresh-notification {
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 1);
     color: white;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Добавлено свечение */
 }
