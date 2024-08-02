@@ -194,7 +194,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 sleepTimeContainer.style.display = 'none';
             }
 
-            flightTimeLabel.textContent = `Время вылета: ${String(flightDate.getHours()).padStart(2, '0')}:${String(flightDate.getMinutes()).padStart(2, '0')}`;
+            function convertToMoscowTime(localTime) {
+                // Форматируем время в московской временной зоне
+                const moscowTime = new Intl.DateTimeFormat('ru-RU', {
+                    timeZone: 'Europe/Moscow',
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false, // Используем 24-часовой формат
+                }).format(localTime);
+
+                return moscowTime;
+            }
+
+            const moscowFlightDate = convertToMoscowTime(flightDate);
+            // Разбиваем строку московского времени на компоненты
+            const [datePart, timePart] = moscowFlightDate.split(', ');
+            const [hours, minutes] = timePart.split(':');
+
+            // Обновляем текст метки времени полета
+            if (flightDate.getHours() == hours) {
+                flightTimeLabel.innerHTML = `Вылет: ${String(flightDate.getHours()).padStart(2, '0')}:${String(flightDate.getMinutes()).padStart(2, '0')} (✅ МСК: ${hours}:${minutes})`;
+            } else {
+                flightTimeLabel.innerHTML = `Вылет: ${String(flightDate.getHours()).padStart(2, '0')}:${String(flightDate.getMinutes()).padStart(2, '0')} (⚠️ <b>МСК: ${hours}:${minutes}</b>)`;
+            }
             updateCountdown(flightDate, departureDate, wakeUpDate, sleepDate, roomExitDate, mode);
         } else {
             outputGroup.style.display = 'none';
