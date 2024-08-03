@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const titleStatusDisplay = document.getElementById('title-status');
     const flightTimeInput = document.getElementById('flight-time');
+    const flightNumberInput = document.getElementById('flight-number');
+    const flightInfoLabel = document.getElementById('flight-info-label');
     const flightTimeLabel = document.getElementById('flight-time-label');
     const departureTimeDisplay = document.getElementById('departure-time');
     const roomExitTimeDisplay = document.getElementById('room-exit-time');
@@ -21,6 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let previousMinutes = null;
     let previousSeconds = null;
 
+    let flightsData = {}; // Переменная для хранения данных рейсов
+    let moscowFlightString = null;
+
+    fetch('flights.json')
+        .then(response => response.json())
+        .then(data => {
+            flightsData = data; // Сохранение загруженных данных в переменную
+            setFlightInfo();
+        })
+        .catch(error => console.error('Ошибка загрузки flights.json:', error));
+
     const showRefreshNotification = () => {
         const notification = document.getElementById('refresh-notification');
         notification.style.display = 'flex';
@@ -31,6 +44,28 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             notification.style.display = 'none';
         }, 1500); // Скрыть уведомление после завершения анимации
+    };
+
+    function setFlightInfo() {
+        const flightNumber = flightNumberInput.value; // Получаем текущий номер рейса
+
+        // Проверка наличия номера рейса в данных
+        if (flightsData[flightNumber]) {
+            const flightInfo = flightsData[flightNumber];
+            const flightTimeInputValue = flightTimeInput.value;
+
+            if (flightInfo.ETD == moscowFlightString) {
+                flightInfoLabel.innerHTML = `✅ ${flightInfo.from.icao}/${flightInfo.from.iata} (${flightInfo.ETD}) → ${flightInfo.to.icao}/${flightInfo.to.iata} (${flightInfo.STA})`;
+            } else {
+                flightInfoLabel.innerHTML = `❌ ${flightInfo.from.icao}/${flightInfo.from.iata} (<b>${flightInfo.ETD}</b>) → ${flightInfo.to.icao}/${flightInfo.to.iata} (${flightInfo.STA})`;
+            };
+
+            // Обновление текста с информацией о рейсе
+
+        } else {
+            // Очищаем текст, если рейс не найден
+            flightInfoLabel.innerHTML = '<b>⚠️ Отсутствует информация о рейсе</b>';
+        }
     };
 
     let touchStartY = 0;
@@ -214,6 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Разбиваем строку московского времени на компоненты
             const [datePart, timePart] = moscowFlightDate.split(', ');
             const [hours, minutes] = timePart.split(':');
+            moscowFlightString = `${hours}:${minutes}`;
 
             // Обновляем текст метки времени полета
             if (flightDate.getHours() == hours) {
@@ -222,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 flightTimeLabel.innerHTML = `Вылет: ${String(flightDate.getHours()).padStart(2, '0')}:${String(flightDate.getMinutes()).padStart(2, '0')} (⚠️ <b>МСК: ${hours}:${minutes}</b>)`;
             }
             updateCountdown(flightDate, departureDate, wakeUpDate, sleepDate, roomExitDate, mode);
+            setFlightInfo();
         } else {
             outputGroup.style.display = 'none';
             modeGroup.style.display = 'none';
@@ -300,6 +337,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('sleepDuration')) {
         sleepDurationSlider.value = localStorage.getItem('sleepDuration');
         sleepValueDisplay.textContent = sleepDurationSlider.value;
+    }
+
+    // Ограничение ввода только цифрами и проверка номера рейса
+    flightNumberInput.addEventListener('input', (event) => {
+        // Удаляем все нецифровые символы
+        event.target.value = event.target.value.replace(/\D/g, '');
+        setFlightInfo();
+        localStorage.setItem('flightNumber', event.target.value);
+    });
+
+    if (localStorage.getItem('flightNumber')) {
+        flightNumberInput.value = localStorage.getItem('flightNumber');
     }
 
     updateTheme();

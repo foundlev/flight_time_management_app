@@ -25,7 +25,11 @@
         <h1 id="title-status">Расчёт времени</h1>
         <div class="input-group">
             <label for="flight-time" id="flight-time-label">Время вылета</label>
-            <input type="number" id="flight-time" placeholder="Формат: 0000" maxlength="5" autocomplete="off" inputmode="numeric">
+            <label id="flight-info-label"></label>
+            <div class="input-row">
+                <input type="number" id="flight-time" placeholder="ETD" maxlength="5" autocomplete="off" inputmode="numeric">
+                <input type="number" id="flight-number" placeholder="Рейс" maxlength="5" autocomplete="off" inputmode="numeric">
+            </div>
         </div>
         <div class="time-container">
             <p id="current-time" class="time-display"></p>

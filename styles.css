@@ -71,13 +71,17 @@ h1 {
     font-size: 1.4em;
 }
 
-#flight-time {
+#flight-time, #flight-number {
     font-size: 2em;
 }
 
 label {
     font-size: 1.2em;
     margin-bottom: 10px;
+}
+
+#flight-info-label {
+    font-size: 1.15em;
 }
 
 .time-container {
@@ -102,6 +106,23 @@ label {
     display: inline-block;
     background-color: #f9f9f9;
     transition: all 0.3s ease;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.input-row input[type="number"] {
+    width: 48%; /* Доля от ширины контейнера */
+    padding: var(--input-padding);
+    font-size: 1.2em;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    transition: border-color var(--transition-speed), background-color var(--transition-speed);
+    box-shadow: var(--shadow-light);
 }
 
 body[data-theme='dark'] .time-display {
