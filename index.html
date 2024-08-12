@@ -36,9 +36,15 @@
             <p id="countdown-display" class="countdown-display"></p>
         </div>
         <div class="output-group" id="output-group">
-            <p>Выезд: <span id="departure-time">00:00</span></p>
+            <p id="edit-departure-time">
+                Выезд: <span id="departure-time">00:00</span>
+                <span id="old-departure-time"></span>
+            </p>
             <p id="room-exit-time-paragraph" style="display:none;">Выход из номера: <span id="room-exit-time" style="display:none;">00:00</span></p>
-            <p>Подъем: <span id="wake-up-time">00:00</span></p>
+            <p id="edit-wake-up-time" style="display:none;">
+                Подъем: <span id="wake-up-time">00:00</span>
+                <span id="old-wake-up-time"></span>
+            </p>
             <p id="sleep-time-container" style="display:none;">Уход ко сну: <span id="sleep-time">00:00</span></p>
         </div>
         <div class="mode-group" id="mode-group">

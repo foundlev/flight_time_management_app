@@ -1,4 +1,3 @@
-
 :root {
     --background-light: #f7f7f7;
     --background-dark: #1f1e1e;
@@ -252,6 +251,12 @@ input[type="range"]::-moz-range-thumb {
     width: 100%;
     text-align: center;
     font-family: 'Roboto Mono', monospace;
+}
+
+#old-departure-time, #old-wake-up-time {
+    font-size: 1em;
+    color: #888; /* Цвет шрифта для старой цены */
+    text-decoration: line-through; /* Перечеркивание текста */
 }
 
 [data-theme="dark"] .output-group p {

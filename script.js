@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const flightInfoLabel = document.getElementById('flight-info-label');
     const flightTimeLabel = document.getElementById('flight-time-label');
     const departureTimeDisplay = document.getElementById('departure-time');
+    const oldDepartureTimeDisplay = document.getElementById('old-departure-time');
     const roomExitTimeDisplay = document.getElementById('room-exit-time');
     const roomExitTimeDisplayParagraph = document.getElementById('room-exit-time-paragraph');
     const wakeUpTimeDisplay = document.getElementById('wake-up-time');
+    const oldWakeUpTimeDisplay = document.getElementById('old-wake-up-time')
     const sleepDurationSlider = document.getElementById('sleep-duration');
     const sleepValueDisplay = document.getElementById('sleep-value');
     const sleepTimeContainer = document.getElementById('sleep-time-container');
@@ -20,11 +22,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const modeGroup = document.getElementById('mode-group');
     const sliderGroup = document.getElementById('slider-group');
 
+    const departureTimeEditor = document.getElementById('edit-departure-time');
+    const wakeUpTimeEditor = document.getElementById('edit-wake-up-time');
+
     let previousMinutes = null;
     let previousSeconds = null;
 
+    let mode = 'home';
+
     let flightsData = {}; // Переменная для хранения данных рейсов
+    let flightsDataRosia = {};
     let moscowFlightString = null;
+
+    fetch('flights_rosia.json')
+        .then(response => response.json())
+        .then(data => {
+            flightsDataRosia = data; // Сохранение загруженных данных в переменную
+            setFlightInfo();
+        })
+        .catch(error => console.error('Ошибка загрузки flights_rosia.json:', error));
 
     fetch('flights.json')
         .then(response => response.json())
@@ -46,6 +62,115 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500); // Скрыть уведомление после завершения анимации
     };
 
+    departureTimeEditor.addEventListener('click', function() {
+        if (localStorage.getItem('newDepartureTime')) {
+
+            localStorage.removeItem('newDepartureTime');
+            updatePage();
+//            alert('Время выхода сброшено');
+
+        } else {
+
+            // Запрашиваем ввод у пользователя
+            const currentDepartureTime = departureTimeDisplay.textContent;
+            currentDepartureTimeDigit = currentDepartureTime.replace(/:/g, '');
+            passengerTimeString = changeStringTime(currentDepartureTime, 30);
+
+            let input = prompt(`Укажите новое время выезда.\nТекущее: ${currentDepartureTime}\nДля выезда пассажиром: ${passengerTimeString}`);
+
+            if (input !== null) {
+                // Удаляем символ ":" из строки
+                let sanitizedInput = input.replace(/:/g, '');
+
+                if (sanitizedInput.length == 3) {
+                    sanitizedInput = "0" + sanitizedInput;
+                }
+
+                if (currentDepartureTimeDigit == sanitizedInput) {
+                    alert('Новое время совпадает с текущим');
+                } else if (/^\d{4}$/.test(sanitizedInput)) {
+                    // Проверяем, что строка состоит из 4 цифр
+                    // Сохраняем строку в localStorage
+                    localStorage.setItem('newDepartureTime', sanitizedInput);
+                    updatePage();
+//                    alert('Время выхода изменено');
+                } else {
+                    alert('Новое время должно быть из 4 цифр');
+                }
+            }
+
+        }
+    });
+
+    wakeUpTimeEditor.addEventListener('click', function() {
+        if (localStorage.getItem('newWakeUpTime')) {
+
+            localStorage.removeItem('newWakeUpTime');
+            updatePage();
+//            alert('Время подъема сброшено');
+
+        } else {
+
+            // Запрашиваем ввод у пользователя
+            const currentWakeUpTime = wakeUpTimeDisplay.textContent;
+            const shirtTime = changeStringTime(currentWakeUpTime, -20);
+            const shirtBaggageTime = changeStringTime(currentWakeUpTime, -35);
+            let input = prompt(`Укажите новое время подъема.\nТекущее: ${currentWakeUpTime}\nПогладить рубашку: ${shirtTime}\nПогладить рубашку и собрать чемодан: ${shirtBaggageTime}`);
+            currentWakeUpTimeDigit = currentWakeUpTime.replace(/:/g, '');
+
+            if (input !== null) {
+                // Удаляем символ ":" из строки
+                let sanitizedInput = input.replace(/:/g, '');
+
+                if (sanitizedInput.length == 3) {
+                    sanitizedInput = "0" + sanitizedInput;
+                }
+
+                if (currentWakeUpTimeDigit == sanitizedInput) {
+                    alert('Новое время совпадает с текущим');
+                } else if (/^\d{4}$/.test(sanitizedInput)) {
+                    // Проверяем, что строка состоит из 4 цифр
+                    // Сохраняем строку в localStorage
+                    localStorage.setItem('newWakeUpTime', sanitizedInput);
+                    updatePage();
+//                    alert('Время подъема изменено');
+                } else {
+                    alert('Новое время должно быть из 4 цифр');
+                }
+            }
+
+        }
+    });
+
+    function changeStringTime(currentStringTime, changeValueInt) {
+        let nowTime = currentStringTime.includes(':') ? currentStringTime.replace(/:/g, '') : currentStringTime;
+
+        // Разделяем строку на часы и минуты
+        let hours = parseInt(nowTime.substring(0, 2), 10); // Преобразуем первые два символа в часы
+        let minutes = parseInt(nowTime.substring(2, 4), 10); // Преобразуем последние два символа в минуты
+
+        minutes += changeValueInt;
+        // Если минут стало 60 или больше, то прибавляем 1 час и уменьшаем минуты на 60
+        if (minutes >= 60) {
+            minutes -= 60;
+            hours += 1;
+        }
+        // Если часы стали 24 или больше, то обнуляем их (переход через полночь)
+        if (hours >= 24) {
+            hours = 0;
+        }
+
+        return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+
+    }
+
+    function updatePage() {
+        showRefreshNotification(); // Показать уведомление
+        setTimeout(() => {
+            location.reload(); // Обновляем страницу через 1 секунду после показа уведомления
+        }, 1000);
+    }
+
     function setFlightInfo() {
         const flightNumber = flightNumberInput.value; // Получаем текущий номер рейса
 
@@ -62,6 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Обновление текста с информацией о рейсе
 
+        } else if (flightsDataRosia[flightNumber]) {
+            const flightInfo = flightsDataRosia[flightNumber];
+            flightInfoLabel.innerHTML = `💼 (Local Time) ${flightInfo.from.iata} (${flightInfo.ETD}) → ${flightInfo.to.iata} (${flightInfo.STA})`;
+
         } else {
             // Очищаем текст, если рейс не найден
             flightInfoLabel.innerHTML = '<b>⚠️ Отсутствует информация о рейсе</b>';
@@ -72,6 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchEndY = 0;
     const minSwipeDistance = 300; // Минимальная длина свайпа, чтобы он был засчитан
 
+    let flightTimeInputLast = null;
+
     document.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
     }, false);
@@ -81,14 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false);
 
     document.addEventListener('touchend', () => {
-        console.log(touchEndY - touchStartY);
         if (touchStartY && touchEndY - touchStartY > minSwipeDistance) {
-            console.log('done');
             // Свайп вниз
-            showRefreshNotification(); // Показать уведомление
-            setTimeout(() => {
-                location.reload(); // Обновляем страницу через 1 секунду после показа уведомления
-            }, 1000);
+            updatePage();
         } else {
             touchStartY = 0;
             touchEndY = 0;
@@ -106,31 +232,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateCurrentTime = () => {
         const now = new Date();
+        now.setDate(1);
+        now.setMonth(0);
+        now.setYear(2024);
         currentTimeDisplay.innerHTML = `Текущее время: <span>${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}</span>`;
     };
 
     const updateCountdown = (flightDate, departureDate, wakeUpDate, sleepDate, roomExitDate, mode) => {
         const now = new Date();
+        const nowTimeMinutes = now.getHours() * 60 + now.getMinutes()
         updateCurrentTime();
 
-        let targetDate = flightDate;
+        let targetDate = null;
         let message = "До вылета: ";
         let highlightElement = null;
 
-        if (sleepDate && now < sleepDate) {
-            targetDate = sleepDate;
+        let sleepTimeMinutes = sleepDate ? sleepDate.getHours() * 60 + sleepDate.getMinutes() : null
+        let wakeUpTimeMinutes = wakeUpDate ? wakeUpDate.getHours() * 60 + wakeUpDate.getMinutes() : null
+        let roomExitTimeMinutes = roomExitDate ? roomExitDate.getHours() * 60 + roomExitDate.getMinutes() : null
+        let departureTimeMinutes = departureDate ? departureDate.getHours() * 60 + departureDate.getMinutes() : null
+        let flightTimeMinutes = flightDate ? flightDate.getHours() * 60 + flightDate.getMinutes() : null
+
+        let times = [];
+
+        targetDate = flightTimeMinutes < nowTimeMinutes ? flightTimeMinutes + 24 * 60 : flightTimeMinutes;
+
+        if (sleepTimeMinutes !== null) {
+            sleepTimeMinutes = sleepTimeMinutes < nowTimeMinutes ? sleepTimeMinutes + 24 * 60 : sleepTimeMinutes;
+            times.push({ time: sleepTimeMinutes, event: 'sleep' });
+        }
+
+        if (wakeUpTimeMinutes !== null  && sleepTimeMinutes !== null) {
+            wakeUpTimeMinutes = wakeUpTimeMinutes < nowTimeMinutes ? wakeUpTimeMinutes + 24 * 60 : wakeUpTimeMinutes;
+            times.push({ time: wakeUpTimeMinutes, event: 'wakeUp' });
+        }
+
+        if (roomExitTimeMinutes !== null && mode === 'hotel') {
+            roomExitTimeMinutes = roomExitTimeMinutes < nowTimeMinutes ? roomExitTimeMinutes + 24 * 60 : roomExitTimeMinutes;
+            times.push({ time: roomExitTimeMinutes, event: 'roomExit' });
+        }
+
+        if (departureTimeMinutes !== null) {
+            departureTimeMinutes = departureTimeMinutes < nowTimeMinutes ? departureTimeMinutes + 24 * 60 : departureTimeMinutes;
+            times.push({ time: departureTimeMinutes, event: 'departure' });
+        }
+
+        // Находим минимальное время и соответствующее событие
+        let nextEvent = times.reduce((min, current) => current.time < min.time ? current : min, { time: Infinity });
+
+        // Логика выбора следующего события и установки targetDate
+        if (nextEvent.event === 'sleep') {
+            targetDate = sleepTimeMinutes;
             message = "До ухода ко сну: ";
             highlightElement = sleepTimeContainer;
-        } else if (now < wakeUpDate) {
-            targetDate = wakeUpDate;
+        } else if (nextEvent.event === 'wakeUp') {
+            targetDate = wakeUpTimeMinutes;
             message = "До подъема: ";
             highlightElement = wakeUpTimeDisplay.parentElement;
-        } else if (mode === 'hotel' && now < roomExitDate) {
-            targetDate = roomExitDate;
+        } else if (nextEvent.event === 'roomExit') {
+            targetDate = roomExitTimeMinutes;
             message = "До выхода из номера: ";
             highlightElement = roomExitTimeDisplay.parentElement;
-        } else if (now < departureDate) {
-            targetDate = departureDate;
+        } else if (nextEvent.event === 'departure') {
+            targetDate = departureTimeMinutes;
             message = "До выезда: ";
             highlightElement = departureTimeDisplay.parentElement;
         } else {
@@ -142,25 +306,29 @@ document.addEventListener('DOMContentLoaded', () => {
             highlightElement.classList.add('highlight');
         }
 
-        const timeRemaining = targetDate - now;
+        const minutesRemining = targetDate - nowTimeMinutes;
+        let hours = Math.floor(minutesRemining / 60); // Вычисляем количество часов
+        let minutes = minutesRemining % 60; // Вычисляем остаток минут
+
+        countdownDisplay.innerHTML = `<span>${message}</span>${hours} ч ${minutes} мин`;
 
 //        if (timeRemaining > 0) {
-        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+//        const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+//        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+//        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        // Обновляем отображение только если минуты или секунды изменились
-        if (previousMinutes !== minutes || previousSeconds !== seconds) {
-            previousMinutes = minutes;
-            previousSeconds = seconds;
-            countdownDisplay.innerHTML = `<span>${message}</span>${hours} ч ${minutes} мин`;
-        }
-
-        // Переход к следующему этапу, если осталось 0 минут и 0 секунд
-        if (hours === 0 && minutes === 0 && seconds === 0) {
-            previousMinutes = null; // Сброс предыдущих минут для правильного обновления
-            previousSeconds = null; // Сброс предыдущих секунд для правильного обновления
-        }
+//        // Обновляем отображение только если минуты или секунды изменились
+//        if (previousMinutes !== minutes || previousSeconds !== seconds) {
+//            previousMinutes = minutes;
+//            previousSeconds = seconds;
+//            countdownDisplay.innerHTML = `<span>${message}</span>${hours} ч ${minutes} мин`;
+//        }
+//
+//        // Переход к следующему этапу, если осталось 0 минут и 0 секунд
+//        if (hours === 0 && minutes === 0 && seconds === 0) {
+//            previousMinutes = null; // Сброс предыдущих минут для правильного обновления
+//            previousSeconds = null; // Сброс предыдущих секунд для правильного обновления
+//        }
 //        } else {
 //            countdownDisplay.textContent = '';
 //        }
@@ -171,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const calculateTimes = () => {
         const flightTime = flightTimeInput.value.replace(':', '');
-        let mode = 'home';
         for (const radio of modeRadios) {
             if (radio.checked) {
                 mode = radio.value;
@@ -188,7 +355,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const flightMinutes = parseInt(flightTime.slice(2), 10);
 
             const flightDate = new Date();
+            flightDate.setDate(1);
+            flightDate.setMonth(0);
+            flightDate.setYear(2024);
             const now = new Date();
+            now.setDate(1);
+            now.setMonth(0);
+            now.setYear(2024);
 
             flightDate.setHours(flightHours);
             flightDate.setMinutes(flightMinutes);
@@ -210,23 +383,101 @@ document.addEventListener('DOMContentLoaded', () => {
                 roomExitTimeDisplayParagraph.style.display = 'none';
             }
 
-            const departureDate = new Date(flightDate.getTime() + departureOffset);
+            let tempDepartureDate = null;
+            let tempOldDepartureDate = null;
+
+            if (localStorage.getItem('newDepartureTime')) {
+                const newDepartureTimeRaw = localStorage.getItem('newDepartureTime');
+
+                const newDepartureHours = parseInt(newDepartureTimeRaw.slice(0, 2), 10);
+                const newDepartureMinutes = parseInt(newDepartureTimeRaw.slice(2), 10);
+
+                tempDepartureDate = new Date();
+                tempDepartureDate.setDate(1);
+                tempDepartureDate.setMonth(0);
+                tempDepartureDate.setYear(2024);
+                tempDepartureDate.setHours(newDepartureHours);
+                tempDepartureDate.setMinutes(newDepartureMinutes);
+
+                tempOldDepartureDate = new Date(flightDate.getTime() + departureOffset);
+                tempOldDepartureDate.setDate(1);
+                tempOldDepartureDate.setMonth(0);
+                tempOldDepartureDate.setYear(2024);
+            } else {
+                tempDepartureDate = new Date(flightDate.getTime() + departureOffset);
+                tempDepartureDate.setDate(1);
+                tempDepartureDate.setMonth(0);
+                tempDepartureDate.setYear(2024);
+            }
+
+            const departureDate = tempDepartureDate;
+            const oldDepartureDate = tempOldDepartureDate;
+
             const roomExitDate = new Date(departureDate.getTime() + roomExitOffset);
-            const wakeUpDate = new Date(roomExitDate.getTime() + wakeUpOffset);
+            roomExitDate.setDate(1);
+            roomExitDate.setMonth(0);
+            roomExitDate.setYear(2024);
+
+            let tempWakeUpDate = null;
+            let tempOldWakeUpDate = null;
+
+            if (localStorage.getItem('newWakeUpTime')) {
+                const newWakeUpTimeRaw = localStorage.getItem('newWakeUpTime');
+
+                const newWakeUpHours = parseInt(newWakeUpTimeRaw.slice(0, 2), 10);
+                const newWakeUpMinutes = parseInt(newWakeUpTimeRaw.slice(2), 10);
+
+                tempWakeUpDate = new Date();
+                tempWakeUpDate.setDate(1);
+                tempWakeUpDate.setMonth(0);
+                tempWakeUpDate.setYear(2024);
+                tempWakeUpDate.setHours(newWakeUpHours);
+                tempWakeUpDate.setMinutes(newWakeUpMinutes);
+
+                tempOldWakeUpDate = new Date(roomExitDate.getTime() + wakeUpOffset);
+                tempOldWakeUpDate.setDate(1);
+                tempOldWakeUpDate.setMonth(0);
+                tempOldWakeUpDate.setYear(2024);
+            } else {
+                tempWakeUpDate = new Date(roomExitDate.getTime() + wakeUpOffset);
+                tempWakeUpDate.setDate(1);
+                tempWakeUpDate.setMonth(0);
+                tempWakeUpDate.setYear(2024);
+            }
+
+            const wakeUpDate = tempWakeUpDate;
+            const oldWakeUpDate = tempOldWakeUpDate;
 
             departureTimeDisplay.textContent = `${String(departureDate.getHours()).padStart(2, '0')}:${String(departureDate.getMinutes()).padStart(2, '0')}`;
+            if (oldDepartureDate) {
+                oldDepartureTimeDisplay.textContent = `${String(oldDepartureDate.getHours()).padStart(2, '0')}:${String(oldDepartureDate.getMinutes()).padStart(2, '0')}`;
+            } else {
+                oldDepartureTimeDisplay.textContent = '';
+            }
+
             roomExitTimeDisplay.textContent = `${String(roomExitDate.getHours()).padStart(2, '0')}:${String(roomExitDate.getMinutes()).padStart(2, '0')}`;
+
             wakeUpTimeDisplay.textContent = `${String(wakeUpDate.getHours()).padStart(2, '0')}:${String(wakeUpDate.getMinutes()).padStart(2, '0')}`;
+            if (tempOldWakeUpDate) {
+                oldWakeUpTimeDisplay.textContent =  `${String(oldWakeUpDate.getHours()).padStart(2, '0')}:${String(oldWakeUpDate.getMinutes()).padStart(2, '0')}`;
+            } else {
+                oldWakeUpTimeDisplay.textContent = '';
+            }
 
             let sleepDate;
             if (parseFloat(sleepDurationSlider.value) > 0) {
                 sleepDate = new Date(wakeUpDate);
                 sleepDate.setHours(wakeUpDate.getHours() - Math.floor(parseFloat(sleepDurationSlider.value)));
                 sleepDate.setMinutes(wakeUpDate.getMinutes() - (parseFloat(sleepDurationSlider.value) % 1) * 60);
+                sleepDate.setDate(1);
+                sleepDate.setMonth(0);
+                sleepDate.setYear(2024);
                 sleepTimeDisplay.textContent = `${String(sleepDate.getHours()).padStart(2, '0')}:${String(sleepDate.getMinutes()).padStart(2, '0')}`;
                 sleepTimeContainer.style.display = 'block';
+                wakeUpTimeEditor.style.display = 'block';
             } else {
                 sleepTimeContainer.style.display = 'none';
+                wakeUpTimeEditor.style.display = 'none';
             }
 
             function convertToMoscowTime(localTime) {
@@ -265,6 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sliderGroup.style.display = 'none';
 
             departureTimeDisplay.textContent = '00:00';
+            oldDepartureTimeDisplay.textContent = '';
             roomExitTimeDisplay.textContent = '00:00';
             wakeUpTimeDisplay.textContent = '00:00';
             sleepTimeContainer.style.display = 'none';
@@ -284,6 +536,15 @@ document.addEventListener('DOMContentLoaded', () => {
             value = '0' + value;
         }
         if (value.length === 4) {
+
+            if (flightTimeInputLast != value) {
+                if (flightTimeInputLast !== null) {
+                    localStorage.removeItem('newDepartureTime');
+                    localStorage.removeItem('newWakeUpTime');
+                }
+                flightTimeInputLast = value;
+            }
+
             const hours = value.slice(0, 2);
             const minutes = value.slice(2);
             if (parseInt(hours, 10) >= 24) {
