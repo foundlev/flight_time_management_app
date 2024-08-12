@@ -1,0 +1,1952 @@
+{
+    "6220": {
+        "number": "FV6220",
+        "from": {
+            "icao": "",
+            "iata": "DYR"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "15:25",
+        "STA": "14:30"
+    },
+    "6219": {
+        "number": "FV6219",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "DYR"
+        },
+        "ETD": "19:35",
+        "STA": "12:25"
+    },
+    "6435": {
+        "number": "FV6435",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "ASF"
+        },
+        "ETD": "15:00",
+        "STA": "18:40"
+    },
+    "6436": {
+        "number": "FV6436",
+        "from": {
+            "icao": "",
+            "iata": "ASF"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "19:30",
+        "STA": "21:20"
+    },
+    "6251": {
+        "number": "FV6251",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "VVO"
+        },
+        "ETD": "15:40",
+        "STA": "06:55"
+    },
+    "6425": {
+        "number": "FV6425",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "VOG"
+        },
+        "ETD": "08:50",
+        "STA": "10:50"
+    },
+    "6426": {
+        "number": "FV6426",
+        "from": {
+            "icao": "",
+            "iata": "VOG"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "11:45",
+        "STA": "13:45"
+    },
+    "6209": {
+        "number": "FV6209",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVX"
+        },
+        "ETD": "00:45",
+        "STA": "05:15"
+    },
+    "6210": {
+        "number": "FV6210",
+        "from": {
+            "icao": "",
+            "iata": "SVX"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "09:15",
+        "STA": "09:55"
+    },
+    "6381": {
+        "number": "FV6381",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "IJK"
+        },
+        "ETD": "07:40",
+        "STA": "10:35"
+    },
+    "6379": {
+        "number": "FV6379",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "IJK"
+        },
+        "ETD": "13:45",
+        "STA": "16:40"
+    },
+    "6375": {
+        "number": "FV6375",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "IJK"
+        },
+        "ETD": "17:00",
+        "STA": "19:55"
+    },
+    "6885": {
+        "number": "FV6885",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "IJK"
+        },
+        "ETD": "22:20",
+        "STA": "01:15"
+    },
+    "6886": {
+        "number": "FV6886",
+        "from": {
+            "icao": "",
+            "iata": "IJK"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "08:00",
+        "STA": "08:55"
+    },
+    "6382": {
+        "number": "FV6382",
+        "from": {
+            "icao": "",
+            "iata": "IJK"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "11:30",
+        "STA": "12:25"
+    },
+    "6380": {
+        "number": "FV6380",
+        "from": {
+            "icao": "",
+            "iata": "IJK"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "17:25",
+        "STA": "18:20"
+    },
+    "6376": {
+        "number": "FV6376",
+        "from": {
+            "icao": "",
+            "iata": "IJK"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "20:50",
+        "STA": "21:50"
+    },
+    "6309": {
+        "number": "FV6309",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "KGD"
+        },
+        "ETD": "08:45",
+        "STA": "10:30"
+    },
+    "6313": {
+        "number": "FV6313",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "KGD"
+        },
+        "ETD": "09:40",
+        "STA": "11:25"
+    },
+    "6661": {
+        "number": "FV6661",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "KGD"
+        },
+        "ETD": "16:25",
+        "STA": "18:00"
+    },
+    "6311": {
+        "number": "FV6311",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "KGD"
+        },
+        "ETD": "17:55",
+        "STA": "19:35"
+    },
+    "6310": {
+        "number": "FV6310",
+        "from": {
+            "icao": "",
+            "iata": "KGD"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "11:30",
+        "STA": "15:10"
+    },
+    "6314": {
+        "number": "FV6314",
+        "from": {
+            "icao": "",
+            "iata": "KGD"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "12:25",
+        "STA": "15:55"
+    },
+    "6662": {
+        "number": "FV6662",
+        "from": {
+            "icao": "",
+            "iata": "KGD"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "19:00",
+        "STA": "22:35"
+    },
+    "6312": {
+        "number": "FV6312",
+        "from": {
+            "icao": "",
+            "iata": "KGD"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "20:40",
+        "STA": "00:10"
+    },
+    "6289": {
+        "number": "FV6289",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GDX"
+        },
+        "ETD": "20:10",
+        "STA": "11:25"
+    },
+    "6291": {
+        "number": "FV6291",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GDX"
+        },
+        "ETD": "21:55",
+        "STA": "13:30"
+    },
+    "6290": {
+        "number": "FV6290",
+        "from": {
+            "icao": "",
+            "iata": "GDX"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "14:30",
+        "STA": "14:00"
+    },
+    "6292": {
+        "number": "FV6292",
+        "from": {
+            "icao": "",
+            "iata": "GDX"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "16:35",
+        "STA": "16:10"
+    },
+    "6477": {
+        "number": "FV6477",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "MMK"
+        },
+        "ETD": "07:10",
+        "STA": "09:45"
+    },
+    "6478": {
+        "number": "FV6478",
+        "from": {
+            "icao": "",
+            "iata": "MMK"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "10:45",
+        "STA": "13:10"
+    },
+    "6299": {
+        "number": "FV6299",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "NBC"
+        },
+        "ETD": "05:40",
+        "STA": "07:30"
+    },
+    "6247": {
+        "number": "FV6247",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "NBC"
+        },
+        "ETD": "19:20",
+        "STA": "21:10"
+    },
+    "6300": {
+        "number": "FV6300",
+        "from": {
+            "icao": "",
+            "iata": "NBC"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "08:30",
+        "STA": "10:40"
+    },
+    "6248": {
+        "number": "FV6248",
+        "from": {
+            "icao": "",
+            "iata": "NBC"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "22:20",
+        "STA": "00:15"
+    },
+    "6229": {
+        "number": "FV6229",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "ETD": "06:05",
+        "STA": "07:20"
+    },
+    "6351": {
+        "number": "FV6351",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "ETD": "09:35",
+        "STA": "10:50"
+    },
+    "6253": {
+        "number": "FV6253",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "ETD": "13:30",
+        "STA": "14:40"
+    },
+    "6349": {
+        "number": "FV6349",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "ETD": "17:35",
+        "STA": "18:45"
+    },
+    "6235": {
+        "number": "FV6235",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "ETD": "20:30",
+        "STA": "21:45"
+    },
+    "6347": {
+        "number": "FV6347",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "ETD": "00:10",
+        "STA": "01:25"
+    },
+    "6348": {
+        "number": "FV6348",
+        "from": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "06:25",
+        "STA": "07:50"
+    },
+    "6230": {
+        "number": "FV6230",
+        "from": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "08:20",
+        "STA": "09:40"
+    },
+    "6352": {
+        "number": "FV6352",
+        "from": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "11:45",
+        "STA": "13:05"
+    },
+    "6254": {
+        "number": "FV6254",
+        "from": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "15:40",
+        "STA": "16:55"
+    },
+    "6350": {
+        "number": "FV6350",
+        "from": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "19:55",
+        "STA": "21:15"
+    },
+    "6236": {
+        "number": "FV6236",
+        "from": {
+            "icao": "",
+            "iata": "GOJ"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "22:45",
+        "STA": "00:05"
+    },
+    "6549": {
+        "number": "FV6549",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "PEZ"
+        },
+        "ETD": "15:40",
+        "STA": "17:15"
+    },
+    "6545": {
+        "number": "FV6545",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "PEZ"
+        },
+        "ETD": "19:45",
+        "STA": "21:15"
+    },
+    "6550": {
+        "number": "FV6550",
+        "from": {
+            "icao": "",
+            "iata": "PEZ"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "18:35",
+        "STA": "20:05"
+    },
+    "6546": {
+        "number": "FV6546",
+        "from": {
+            "icao": "",
+            "iata": "PEZ"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "22:15",
+        "STA": "23:45"
+    },
+    "6039": {
+        "number": "FV6039",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "07:00",
+        "STA": "08:30"
+    },
+    "6041": {
+        "number": "FV6041",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "07:30",
+        "STA": "09:05"
+    },
+    "6955": {
+        "number": "FV6955",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "08:15",
+        "STA": "09:45"
+    },
+    "6131": {
+        "number": "FV6131",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "08:30",
+        "STA": "10:00"
+    },
+    "6167": {
+        "number": "FV6167",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "09:00",
+        "STA": "10:30"
+    },
+    "6195": {
+        "number": "FV6195",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "09:30",
+        "STA": "11:05"
+    },
+    "6213": {
+        "number": "FV6213",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "10:00",
+        "STA": "11:30"
+    },
+    "6127": {
+        "number": "FV6127",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "10:20",
+        "STA": "11:50"
+    },
+    "6057": {
+        "number": "FV6057",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "10:30",
+        "STA": "12:05"
+    },
+    "6957": {
+        "number": "FV6957",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "10:45",
+        "STA": "12:15"
+    },
+    "6059": {
+        "number": "FV6059",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "11:00",
+        "STA": "12:30"
+    },
+    "6215": {
+        "number": "FV6215",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "11:30",
+        "STA": "13:05"
+    },
+    "6243": {
+        "number": "FV6243",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "12:00",
+        "STA": "13:30"
+    },
+    "6245": {
+        "number": "FV6245",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "12:30",
+        "STA": "13:55"
+    },
+    "6271": {
+        "number": "FV6271",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "13:00",
+        "STA": "14:30"
+    },
+    "6045": {
+        "number": "FV6045",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "13:30",
+        "STA": "15:00"
+    },
+    "6855": {
+        "number": "FV6855",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "14:00",
+        "STA": "15:30"
+    },
+    "6427": {
+        "number": "FV6427",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "14:30",
+        "STA": "16:00"
+    },
+    "6959": {
+        "number": "FV6959",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "14:45",
+        "STA": "16:15"
+    },
+    "6481": {
+        "number": "FV6481",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "15:30",
+        "STA": "16:55"
+    },
+    "6495": {
+        "number": "FV6495",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "15:30",
+        "STA": "16:55"
+    },
+    "6497": {
+        "number": "FV6497",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "16:00",
+        "STA": "17:30"
+    },
+    "6517": {
+        "number": "FV6517",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "16:45",
+        "STA": "18:15"
+    },
+    "6085": {
+        "number": "FV6085",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "17:30",
+        "STA": "19:00"
+    },
+    "6519": {
+        "number": "FV6519",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "18:00",
+        "STA": "19:30"
+    },
+    "6967": {
+        "number": "FV6967",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "18:15",
+        "STA": "19:45"
+    },
+    "6089": {
+        "number": "FV6089",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "18:30",
+        "STA": "19:55"
+    },
+    "6969": {
+        "number": "FV6969",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "18:45",
+        "STA": "20:15"
+    },
+    "6579": {
+        "number": "FV6579",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "19:00",
+        "STA": "20:30"
+    },
+    "6093": {
+        "number": "FV6093",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "19:30",
+        "STA": "20:55"
+    },
+    "6703": {
+        "number": "FV6703",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "20:00",
+        "STA": "21:30"
+    },
+    "6097": {
+        "number": "FV6097",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "20:30",
+        "STA": "22:00"
+    },
+    "6705": {
+        "number": "FV6705",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "21:00",
+        "STA": "22:35"
+    },
+    "6707": {
+        "number": "FV6707",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "21:30",
+        "STA": "22:55"
+    },
+    "6709": {
+        "number": "FV6709",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "22:00",
+        "STA": "23:30"
+    },
+    "6809": {
+        "number": "FV6809",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "22:30",
+        "STA": "23:55"
+    },
+    "6805": {
+        "number": "FV6805",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "23:30",
+        "STA": "01:05"
+    },
+    "6807": {
+        "number": "FV6807",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "23:55",
+        "STA": "01:25"
+    },
+    "6951": {
+        "number": "FV6951",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "00:30",
+        "STA": "02:00"
+    },
+    "6699": {
+        "number": "FV6699",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "ETD": "01:00",
+        "STA": "02:30"
+    },
+    "6810": {
+        "number": "FV6810",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "06:00",
+        "STA": "07:30"
+    },
+    "6806": {
+        "number": "FV6806",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "07:00",
+        "STA": "08:30"
+    },
+    "6808": {
+        "number": "FV6808",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "07:30",
+        "STA": "09:00"
+    },
+    "6952": {
+        "number": "FV6952",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "08:00",
+        "STA": "09:30"
+    },
+    "6700": {
+        "number": "FV6700",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "08:30",
+        "STA": "10:00"
+    },
+    "6040": {
+        "number": "FV6040",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "09:30",
+        "STA": "11:00"
+    },
+    "6042": {
+        "number": "FV6042",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "10:00",
+        "STA": "11:30"
+    },
+    "6128": {
+        "number": "FV6128",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "10:30",
+        "STA": "12:00"
+    },
+    "6132": {
+        "number": "FV6132",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "11:00",
+        "STA": "12:30"
+    },
+    "6168": {
+        "number": "FV6168",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "11:30",
+        "STA": "13:00"
+    },
+    "6196": {
+        "number": "FV6196",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "12:00",
+        "STA": "13:30"
+    },
+    "6956": {
+        "number": "FV6956",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "12:15",
+        "STA": "13:50"
+    },
+    "6214": {
+        "number": "FV6214",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "12:30",
+        "STA": "14:00"
+    },
+    "6058": {
+        "number": "FV6058",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "13:00",
+        "STA": "14:30"
+    },
+    "6060": {
+        "number": "FV6060",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "13:30",
+        "STA": "15:00"
+    },
+    "6958": {
+        "number": "FV6958",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "13:45",
+        "STA": "15:15"
+    },
+    "6216": {
+        "number": "FV6216",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "14:00",
+        "STA": "15:30"
+    },
+    "6244": {
+        "number": "FV6244",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "14:30",
+        "STA": "16:00"
+    },
+    "6246": {
+        "number": "FV6246",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "15:00",
+        "STA": "16:30"
+    },
+    "6272": {
+        "number": "FV6272",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "15:30",
+        "STA": "17:00"
+    },
+    "6046": {
+        "number": "FV6046",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "16:00",
+        "STA": "17:30"
+    },
+    "6856": {
+        "number": "FV6856",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "16:30",
+        "STA": "18:00"
+    },
+    "6428": {
+        "number": "FV6428",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "17:00",
+        "STA": "18:30"
+    },
+    "6482": {
+        "number": "FV6482",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "17:30",
+        "STA": "19:00"
+    },
+    "6960": {
+        "number": "FV6960",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "17:45",
+        "STA": "19:15"
+    },
+    "6496": {
+        "number": "FV6496",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "18:00",
+        "STA": "19:30"
+    },
+    "6498": {
+        "number": "FV6498",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "18:30",
+        "STA": "20:00"
+    },
+    "6518": {
+        "number": "FV6518",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "19:30",
+        "STA": "21:00"
+    },
+    "6086": {
+        "number": "FV6086",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "20:00",
+        "STA": "21:30"
+    },
+    "6520": {
+        "number": "FV6520",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "20:30",
+        "STA": "22:00"
+    },
+    "6968": {
+        "number": "FV6968",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "20:45",
+        "STA": "22:15"
+    },
+    "6090": {
+        "number": "FV6090",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "21:00",
+        "STA": "22:30"
+    },
+    "6970": {
+        "number": "FV6970",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "21:15",
+        "STA": "22:45"
+    },
+    "6580": {
+        "number": "FV6580",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "21:30",
+        "STA": "23:00"
+    },
+    "6094": {
+        "number": "FV6094",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "22:00",
+        "STA": "23:30"
+    },
+    "6704": {
+        "number": "FV6704",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "22:30",
+        "STA": "23:55"
+    },
+    "6098": {
+        "number": "FV6098",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "23:00",
+        "STA": "00:30"
+    },
+    "6706": {
+        "number": "FV6706",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "23:30",
+        "STA": "01:00"
+    },
+    "6708": {
+        "number": "FV6708",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "23:55",
+        "STA": "01:30"
+    },
+    "6710": {
+        "number": "FV6710",
+        "from": {
+            "icao": "",
+            "iata": "LED"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "00:30",
+        "STA": "02:00"
+    },
+    "6165": {
+        "number": "FV6165",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SKX"
+        },
+        "ETD": "19:40",
+        "STA": "21:15"
+    },
+    "6166": {
+        "number": "FV6166",
+        "from": {
+            "icao": "",
+            "iata": "SKX"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "22:05",
+        "STA": "23:25"
+    },
+    "6489": {
+        "number": "FV6489",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "GSV"
+        },
+        "ETD": "22:25",
+        "STA": "01:05"
+    },
+    "6490": {
+        "number": "FV6490",
+        "from": {
+            "icao": "",
+            "iata": "GSV"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "06:30",
+        "STA": "07:20"
+    },
+    "6405": {
+        "number": "FV6405",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SCW"
+        },
+        "ETD": "07:05",
+        "STA": "09:00"
+    },
+    "6406": {
+        "number": "FV6406",
+        "from": {
+            "icao": "",
+            "iata": "SCW"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "10:00",
+        "STA": "11:55"
+    },
+    "6363": {
+        "number": "FV6363",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "TJM"
+        },
+        "ETD": "10:30",
+        "STA": "15:15"
+    },
+    "6366": {
+        "number": "FV6366",
+        "from": {
+            "icao": "",
+            "iata": "TJM"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "06:15",
+        "STA": "07:15"
+    },
+    "6364": {
+        "number": "FV6364",
+        "from": {
+            "icao": "",
+            "iata": "TJM"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "16:10",
+        "STA": "17:20"
+    },
+    "6075": {
+        "number": "FV6075",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "ULV"
+        },
+        "ETD": "11:15",
+        "STA": "13:50"
+    },
+    "6079": {
+        "number": "FV6079",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "ULV"
+        },
+        "ETD": "13:50",
+        "STA": "16:20"
+    },
+    "6076": {
+        "number": "FV6076",
+        "from": {
+            "icao": "",
+            "iata": "ULV"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "14:50",
+        "STA": "15:30"
+    },
+    "6080": {
+        "number": "FV6080",
+        "from": {
+            "icao": "",
+            "iata": "ULV"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "17:10",
+        "STA": "17:40"
+    },
+    "6702": {
+        "number": "FV6702",
+        "from": {
+            "icao": "",
+            "iata": "KHV"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "15:45",
+        "STA": "16:50"
+    },
+    "6298": {
+        "number": "FV6298",
+        "from": {
+            "icao": "",
+            "iata": "KHV"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "09:40",
+        "STA": "10:50"
+    },
+    "6193": {
+        "number": "FV6193",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "CEK"
+        },
+        "ETD": "01:55",
+        "STA": "06:20"
+    },
+    "6194": {
+        "number": "FV6194",
+        "from": {
+            "icao": "",
+            "iata": "CEK"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "07:45",
+        "STA": "08:20"
+    },
+    "6273": {
+        "number": "FV6273",
+        "from": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "to": {
+            "icao": "",
+            "iata": "UUS"
+        },
+        "ETD": "23:25",
+        "STA": "15:30"
+    },
+    "6274": {
+        "number": "FV6274",
+        "from": {
+            "icao": "",
+            "iata": "UUS"
+        },
+        "to": {
+            "icao": "",
+            "iata": "SVO"
+        },
+        "ETD": "18:00",
+        "STA": "18:40"
+    }
+}
