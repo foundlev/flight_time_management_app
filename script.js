@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCurrentTime();
 
         let targetDate = null;
-        let message = "До вылета: ";
+        let message = null;
         let highlightElement = null;
 
         let sleepTimeMinutes = sleepDate ? sleepDate.getHours() * 60 + sleepDate.getMinutes() : null
@@ -254,8 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let flightTimeMinutes = flightDate ? flightDate.getHours() * 60 + flightDate.getMinutes() : null
 
         let times = [];
-
-        targetDate = flightTimeMinutes < nowTimeMinutes ? flightTimeMinutes + 24 * 60 : flightTimeMinutes;
 
         if (sleepTimeMinutes !== null) {
             sleepTimeMinutes = sleepTimeMinutes < nowTimeMinutes ? sleepTimeMinutes + 24 * 60 : sleepTimeMinutes;
@@ -275,6 +273,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (departureTimeMinutes !== null) {
             departureTimeMinutes = departureTimeMinutes < nowTimeMinutes ? departureTimeMinutes + 24 * 60 : departureTimeMinutes;
             times.push({ time: departureTimeMinutes, event: 'departure' });
+        }
+
+        if (flightTimeMinutes !== null) {
+            flightTimeMinutes = flightTimeMinutes < nowTimeMinutes ? flightTimeMinutes + 24 * 60 : flightTimeMinutes;
+            times.push({ time: flightTimeMinutes, event: 'flight' });
         }
 
         // Находим минимальное время и соответствующее событие
@@ -298,6 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
             message = "До выезда: ";
             highlightElement = departureTimeDisplay.parentElement;
         } else {
+            targetDate = flightTimeMinutes;
+            message = "До вылета: ";
             highlightElement = flightTimeLabel.parentElement;
         }
 
