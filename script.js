@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentWakeUpTime = wakeUpTimeDisplay.textContent;
             const shirtTime = changeStringTime(currentWakeUpTime, -20);
             const shirtBaggageTime = changeStringTime(currentWakeUpTime, -35);
-            let input = prompt(`Укажите новое время подъема.\nТекущее: ${currentWakeUpTime}\nПогладить рубашку: ${shirtTime}\nПогладить рубашку и собрать чемодан: ${shirtBaggageTime}`);
+            let input = prompt(`Укажите новое время подъема.\nТекущее: ${currentWakeUpTime}\nГлажкар рубашки (-20 мин): ${shirtTime}\nГлажка рубашки + чемодан (-35 мин): ${shirtBaggageTime}`);
             currentWakeUpTimeDigit = currentWakeUpTime.replace(/:/g, '');
 
             if (input !== null) {
@@ -154,6 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (minutes >= 60) {
             minutes -= 60;
             hours += 1;
+        }
+        if (minutes < 60) {
+            minutes += 60;
+            hours -= 1;
         }
         // Если часы стали 24 или больше, то обнуляем их (переход через полночь)
         if (hours >= 24) {
