@@ -364,6 +364,55 @@ input[type="range"]::-moz-range-thumb {
     margin-right: 12px;
 }
 
+/* Стили для контейнера кнопки обновления */
+.refresh-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+/* Стили для кнопки обновления */
+#refresh-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    box-shadow: var(--shadow-light);
+}
+
+[data-theme="dark"] #refresh-button {
+    color: var(--text-dark);
+    background-color: #574174;
+    box-shadow: var(--shadow-dark);
+}
+
+/* Стили для уведомления об отсутствии интернета */
+#no-internet-notification {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.1);
+    color: red;
+    border: 1px solid red;
+    border-radius: var(--border-radius);
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] #no-internet-notification {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: var(--text-dark);
+    border-color: var(--secondary-color);
+}
+
 body[data-theme='light'] #refresh-notification {
     background-color: rgba(255, 255, 255, 1);
     color: black;

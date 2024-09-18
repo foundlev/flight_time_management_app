@@ -1,3 +1,22 @@
+const showRefreshNotification = () => {
+    const notification = document.getElementById('refresh-notification');
+    notification.style.display = 'flex';
+    notification.style.top = '20px'; // Показать уведомление, выдвигая его сверху
+    setTimeout(() => {
+        notification.style.top = '-80px'; // Убрать уведомление за пределы экрана
+    }, 1000); // Уведомление будет отображаться 1 секунду
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 1500); // Скрыть уведомление после завершения анимации
+};
+
+function updatePage() {
+    showRefreshNotification(); // Показать уведомление
+    setTimeout(() => {
+        window.location.reload(true); // Обновляем страницу через 1 секунду после показа уведомления
+    }, 1000);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const titleStatusDisplay = document.getElementById('title-status');
     const flightTimeInput = document.getElementById('flight-time');
@@ -49,18 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setFlightInfo();
         })
         .catch(error => console.error('Ошибка загрузки flights.json:', error));
-
-    const showRefreshNotification = () => {
-        const notification = document.getElementById('refresh-notification');
-        notification.style.display = 'flex';
-        notification.style.top = '20px'; // Показать уведомление, выдвигая его сверху
-        setTimeout(() => {
-            notification.style.top = '-80px'; // Убрать уведомление за пределы экрана
-        }, 1000); // Уведомление будет отображаться 1 секунду
-        setTimeout(() => {
-            notification.style.display = 'none';
-        }, 1500); // Скрыть уведомление после завершения анимации
-    };
 
     departureTimeEditor.addEventListener('click', function() {
         if (localStorage.getItem('newDepartureTime')) {
@@ -168,13 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    function updatePage() {
-        showRefreshNotification(); // Показать уведомление
-        setTimeout(() => {
-            location.reload(); // Обновляем страницу через 1 секунду после показа уведомления
-        }, 1000);
-    }
-
     function setFlightInfo() {
         const flightNumber = flightNumberInput.value; // Получаем текущий номер рейса
 
@@ -207,23 +207,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let flightTimeInputLast = null;
 
-    document.addEventListener('touchstart', (event) => {
-        touchStartY = event.touches[0].clientY;
-    }, false);
+//    document.addEventListener('touchstart', (event) => {
+//        touchStartY = event.touches[0].clientY;
+//    }, false);
 
-    document.addEventListener('touchmove', (event) => {
-        touchEndY = event.touches[0].clientY;
-    }, false);
-
-    document.addEventListener('touchend', () => {
-        if (touchStartY && touchEndY - touchStartY > minSwipeDistance) {
-            // Свайп вниз
-            updatePage();
-        } else {
-            touchStartY = 0;
-            touchEndY = 0;
-        }
-    }, false);
+//    document.addEventListener('touchmove', (event) => {
+//        touchEndY = event.touches[0].clientY;
+//    }, false);
+//
+//    document.addEventListener('touchend', () => {
+//        if (touchStartY && touchEndY - touchStartY > minSwipeDistance) {
+//            // Свайп вниз
+//            updatePage();
+//        } else {
+//            touchStartY = 0;
+//            touchEndY = 0;
+//        }
+//    }, false);
 
     const updateTheme = () => {
         const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -628,3 +628,31 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateTimes();
     setInterval(calculateTimes, 5000);
 });
+
+// Логика для кнопки обновления
+document.getElementById('refresh-button').addEventListener('click', function() {
+    // Попытка получить страницу с интернета, игнорируя кэш
+    fetch(window.location.href, { cache: "no-store" })
+        .then(function(response) {
+            if (response.ok) {
+                // Если запрос успешен, перезагружаем страницу для обновления контента
+                updatePage();
+            } else {
+                // Если ответ не ок, показываем уведомление об отсутствии интернета
+                showNoInternetNotification();
+            }
+        })
+        .catch(function(error) {
+            // Если произошла ошибка (например, нет интернета), показываем уведомление
+            showNoInternetNotification();
+        });
+});
+
+function showNoInternetNotification() {
+    const notification = document.getElementById('no-internet-notification');
+    notification.style.display = 'block';
+    // Скрываем уведомление через несколько секунд
+    setTimeout(function() {
+        notification.style.display = 'none';
+    }, 3000);
+}

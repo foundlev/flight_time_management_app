@@ -15,6 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="refresh-container">
+        <button id="refresh-button">Обновить данные</button>
+        <div id="no-internet-notification" style="display:none;">
+            Сейчас нет интернета
+        </div>
+    </div>
     <div id="refresh-notification" style="display:none;">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.2857 6.85714L8.57143 18.5714L3.71429 13.7143" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -68,5 +74,18 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+              console.log('Service Worker зарегистрирован с областью:', registration.scope);
+            })
+            .catch((error) => {
+              console.log('Ошибка при регистрации Service Worker:', error);
+            });
+        });
+      }
+    </script>
 </body>
 </html>
