@@ -81,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Запрашиваем ввод у пользователя
             const currentDepartureTime = departureTimeDisplay.textContent;
             currentDepartureTimeDigit = currentDepartureTime.replace(/:/g, '');
-            passengerTimeString = changeStringTime(currentDepartureTime, 30);
+            passengerTimeString = changeStringTime(currentDepartureTime, 35);
 
-            let input = prompt(`Укажите новое время выезда.\nТекущее: ${currentDepartureTime}\nДля выезда пассажиром: ${passengerTimeString}`);
+            let input = prompt(`Укажите новое время выезда.\nТекущее: ${currentDepartureTime}\nДля выезда пассажиром (+35 мин): ${passengerTimeString}`);
 
             if (input !== null) {
                 // Удаляем символ ":" из строки
@@ -120,9 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Запрашиваем ввод у пользователя
             const currentWakeUpTime = wakeUpTimeDisplay.textContent;
+            const extraShortTime = changeStringTime(currentWakeUpTime, 30);
             const shirtTime = changeStringTime(currentWakeUpTime, -20);
             const shirtBaggageTime = changeStringTime(currentWakeUpTime, -35);
-            let input = prompt(`Укажите новое время подъема.\nТекущее: ${currentWakeUpTime}\nГлажкар рубашки (-20 мин): ${shirtTime}\nГлажка рубашки + чемодан (-35 мин): ${shirtBaggageTime}`);
+            let input = prompt(`Укажите новое время подъема.\nТекущее: ${currentWakeUpTime}\nБез еды и душа (+30 мин): ${extraShortTime}\nГлажка рубашки (-20 мин): ${shirtTime}\nГлажка рубашки + чемодан (-35 мин): ${shirtBaggageTime}`);
             currentWakeUpTimeDigit = currentWakeUpTime.replace(/:/g, '');
 
             if (input !== null) {
@@ -153,26 +154,29 @@ document.addEventListener('DOMContentLoaded', () => {
         let nowTime = currentStringTime.includes(':') ? currentStringTime.replace(/:/g, '') : currentStringTime;
 
         // Разделяем строку на часы и минуты
-        let hours = parseInt(nowTime.substring(0, 2), 10); // Преобразуем первые два символа в часы
-        let minutes = parseInt(nowTime.substring(2, 4), 10); // Преобразуем последние два символа в минуты
+        let hours = parseInt(nowTime.substring(0, 2), 10);
+        let minutes = parseInt(nowTime.substring(2, 4), 10);
 
+        // Изменяем минуты на указанное значение
         minutes += changeValueInt;
-        // Если минут стало 60 или больше, то прибавляем 1 час и уменьшаем минуты на 60
+
+        // Если минут стало 60 или больше, корректируем часы
         if (minutes >= 60) {
-            minutes -= 60;
-            hours += 1;
+            hours += Math.floor(minutes / 60);
+            minutes = minutes % 60;
+        } else if (minutes < 0) {
+            hours += Math.floor(minutes / 60);  // уменьшаем часы при отрицательных минутах
+            minutes = (minutes % 60 + 60) % 60; // корректируем минуты в диапазоне 0-59
         }
-        if (minutes < 60) {
-            minutes += 60;
-            hours -= 1;
-        }
-        // Если часы стали 24 или больше, то обнуляем их (переход через полночь)
+
+        // Если часы стали 24 или больше, обнуляем их (переход через полночь)
         if (hours >= 24) {
-            hours = 0;
+            hours = hours % 24;
+        } else if (hours < 0) {
+            hours = (hours % 24 + 24) % 24;
         }
 
         return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-
     }
 
     function setFlightInfo() {
@@ -381,9 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let departureOffset = mode === 'home' ? -2.75 * 60 * 60 * 1000 : -2 * 60 * 60 * 1000;
             let roomExitOffset = 0;
-            let wakeUpOffset = -1 * 60 * 60 * 1000;
+            let wakeUpOffset = (-1.25 * 60 - 5) * 60 * 1000;
 
             if (mode === 'hotel') {
+                wakeUpOffset = (-1 * 60 - 5) * 60 * 1000;
                 roomExitOffset = -15 * 60 * 1000;
                 roomExitTimeDisplay.style.display = '';
                 roomExitTimeDisplayParagraph.style.display = '';

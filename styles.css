@@ -259,6 +259,11 @@ input[type="range"]::-moz-range-thumb {
     text-decoration: line-through; /* Перечеркивание текста */
 }
 
+#wake-up-time {
+    /* Делаем жирный шрифт*/
+    font-weight: bold;
+}
+
 [data-theme="dark"] .output-group p {
     color: var(--text-dark);
     background: var(--background-dark);
