@@ -455,3 +455,35 @@ body[data-theme='dark'] #refresh-notification {
         font-size: 1.2em;
     }
 }
+
+.slider-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+}
+
+.slider-group input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    appearance: none;
+    background-color: var(--background-light);
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.slider-group input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+}
+
+[data-theme="dark"] .slider-group input[type="checkbox"] {
+    background-color: var(--background-dark);
+    border-color: var(--secondary-color);
+}
+
+[data-theme="dark"] .slider-group input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+}

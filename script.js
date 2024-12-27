@@ -661,3 +661,20 @@ function showNoInternetNotification() {
         notification.style.display = 'none';
     }, 3000);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sleepDurationSlider = document.getElementById('sleep-duration');
+    const sliderToggle = document.getElementById('slider-toggle');
+
+    // Инициализация состояния чекбокса из localStorage
+    const sliderEnabled = localStorage.getItem('sliderEnabled') === 'true';
+    sliderToggle.checked = sliderEnabled;
+    sleepDurationSlider.disabled = !sliderEnabled;
+
+    // Обновление состояния при изменении чекбокса
+    sliderToggle.addEventListener('change', () => {
+        const isEnabled = sliderToggle.checked;
+        localStorage.setItem('sliderEnabled', isEnabled);
+        sleepDurationSlider.disabled = !isEnabled;
+    });
+});
