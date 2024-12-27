@@ -479,6 +479,11 @@ body[data-theme='dark'] #refresh-notification {
     background-color: var(--primary-color);
 }
 
+#slider-toggle {
+    margin: 20px;
+    padding: 15px;
+}
+
 [data-theme="dark"] .slider-group input[type="checkbox"] {
     background-color: var(--background-dark);
     border-color: var(--secondary-color);
